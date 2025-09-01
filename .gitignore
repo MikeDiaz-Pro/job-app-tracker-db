@@ -1,0 +1,4 @@
+# Data dir
+pgdata/
+# Env files
+.env
