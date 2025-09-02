@@ -2,6 +2,7 @@ services:
   postgres:
     image: postgres:15
     container_name: jat_postgres    
+    restart: always
     environment:      
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
