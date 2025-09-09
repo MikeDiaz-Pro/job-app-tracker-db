@@ -69,6 +69,14 @@ Visit: [http://localhost:5173](http://localhost:5173)
 - [ ] Add OpenAI utility (e.g., auto-fill from Job Description).  
 - [ ] Improve dashboard with metrics (cards, pipeline summary).  
 
+
+
+---
+
+# Notes 
+
+- This is a personal portfolio project. External contributions are currently not accepted.
+
 ---
 
 ## 📜 Module Docs
