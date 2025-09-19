@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import ApplicationsPage from "./features/applications/pages/ApplicationsPage";
 
 const App = () => {
   return (
@@ -7,12 +8,7 @@ const App = () => {
 
       {/* Content area */}
       <main className="mx-auto max-w-screen-xl px-4 py-8">
-        <h1 className="mb-4 text-2xl font-semibold text-gray-800">
-          Dashboard
-        </h1>
-        <p className="text-gray-600">
-          Welcome! This is a placeholder. Next steps: list of applications + filters.
-        </p>
+        <ApplicationsPage/>
       </main>
     </div>
   );
