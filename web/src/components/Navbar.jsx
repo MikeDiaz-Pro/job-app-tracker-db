@@ -26,8 +26,7 @@ const Navbar = () => {
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 md:flex">
           <Button variant="ghost" className="text-white">Dashboard</Button>
-          <Button variant="ghost" className="text-white">Companies</Button>
-          <Button color="blue">New Application</Button>
+          <Button variant="ghost" className="text-white">Companies</Button>          
         </div>
 
         {/* Mobile toggle */}
