@@ -2,3 +2,6 @@
 pgdata/
 # Env files
 .env
+
+#mac
+.DS_Store

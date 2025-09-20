@@ -39,17 +39,17 @@ Actuator health:
 
 ---
 
-## 🗂️ Project structure (WIP)
+## 🗂️ Project structure
 
 ```
 api/
 ├─ src/main/java/com/mikediazpro/jat
 │  ├─ controller/     # REST endpoints
-│  ├─ service/        # application services / orchestration
+│  ├─ service/        # Application services / orchestration
 │  ├─ provider/       # AI providers (OpenAI, future: Google, etc.)
 │  ├─ model/          # DTOs (request/response)
-│  ├─ entity/         # JPA entities (future)
-│  ├─ repository/     # Spring Data repositories (future)
+│  ├─ entity/         # JPA entities
+│  ├─ repository/     # Spring Data repositories
 │  └─ JobAppTrackerApiApplication.java
 ├─ src/main/resources/
 │  └─ application.yml
@@ -75,7 +75,6 @@ These are the dependencies currently included in `pom.xml`:
 
 ---
 
-
 ## 🔑 Configuration & Secrets
 
 All sensitive configuration (API keys, DB credentials) **must not** be committed.
@@ -85,32 +84,27 @@ All sensitive configuration (API keys, DB credentials) **must not** be committed
 
 ### Example: `application_example.yml`
 ```yaml
- 
- server:
-   port: 8080
+server:
+  port: 8080
 
- spring:
-   datasource:
-     url: jdbc:postgresql://localhost:5434/job_tracker
-     username: jat
-     password: secret
-     driver-class-name: org.postgresql.Driver
-   jpa:
-     hibernate:
-       ddl-auto: none
-     properties:
-       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-   threads:
-     virtual:
-       enabled: true
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/job_tracker
+    username: jat
+    password: secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  threads:
+    virtual:
+      enabled: true
 
- logging:
-   level:
-     root: info
-
-## 🔧 Configuration
-
-
+logging:
+  level:
+    root: info
 ```
 
 Environment variables you may use later:
@@ -123,11 +117,35 @@ DATABASE_URL=...
 
 ---
 
-## 🧪 First endpoints (plan)
+## 🧪 Endpoints (current)
 
-- `GET /health` → simple JSON `{status:"ok"}`
+### Health
+- `GET /api/health` → `{ "status": "ok" }`
 
-> Rationale: fast POST (no blocking), client polls or subscribes (SSE/WebSocket in a later step).
+### Applications
+- `GET /api/applications` → List all applications  
+- `POST /api/applications` → Create a new application  
+- `PUT /api/applications/{id}` → Update an existing application  
+- `DELETE /api/applications/{id}` → Delete an application  
+
+---
+
+## 📸 Screenshots (Swagger UI)
+
+### Applications CRUD
+![Swagger Applications Endpoints](./docs/images/api/applications-crud.png)
+
+### Example GET
+![Swagger GET Applications](./docs/images/api/get-applications.png)
+
+### Example POST
+![Swagger POST Application](./docs/images/api/post-application.png)
+
+### Example PUT
+![Swagger PUT Application](./docs/images/api/put-application.png)
+
+### Example DELETE
+![Swagger DELETE Application](./docs/images/api/delete-application.png)
 
 ---
 
@@ -144,6 +162,7 @@ Ensure the API connects via env vars (do **not** hardcode credentials).
 - Prefer **WebClient** or **HttpClient** with timeouts over manual sleeps.
 - Log via `slf4j` (no `System.out.println`).
 - Keep providers behind `provider/` with a clear `AiProvider` interface to swap vendors.
+- Handle errors globally with `@ControllerAdvice` to ensure clean API responses.
 
 ---
 
