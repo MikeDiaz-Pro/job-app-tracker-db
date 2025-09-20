@@ -133,19 +133,19 @@ DATABASE_URL=...
 ## 📸 Screenshots (Swagger UI)
 
 ### Applications CRUD
-![Swagger Applications Endpoints](./docs/images/api/applications-crud.png)
+![Swagger Applications Endpoints](../../docs/images/api/applications-crud.png)
 
 ### Example GET
-![Swagger GET Applications](./docs/images/api/get-applications.png)
+![Swagger GET Applications](../../docs/images/api/get-applications.png)
 
 ### Example POST
-![Swagger POST Application](./docs/images/api/post-application.png)
+![Swagger POST Application](../../docs/images/api/post-application.png)
 
 ### Example PUT
-![Swagger PUT Application](./docs/images/api/put-application.png)
+![Swagger PUT Application](../../docs/images/api/put-application.png)
 
 ### Example DELETE
-![Swagger DELETE Application](./docs/images/api/delete-application.png)
+![Swagger DELETE Application](../../docs/images/api/delete-application.png)
 
 ---
 
