@@ -1,0 +1,87 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  formDialog: {
+    open: false,
+    mode: "create", // "create" | "edit"
+    currentId: null, 
+  },
+  confirmDialog: {
+    open: false,
+    message: "",
+    onConfirm: null, // callback 
+  },
+  toast: {
+    type: null, // "success" | "error" | "info" | null
+    message: "",
+  },
+  loadingOverlay: {
+    active: false,
+    message: "Loading...",
+  },
+};
+
+const uiSlice = createSlice({
+  name: "ui",
+  initialState,
+  reducers: {
+    // Form Dialog
+    openFormDialog: (state, action) => {
+      state.formDialog = {
+        open: true,
+        mode: action.payload?.mode || "create",
+        currentId: action.payload?.id || null,
+      };
+    },
+    closeFormDialog: (state) => {
+      state.formDialog = { open: false, mode: "create", currentId: null };
+    },
+
+    // Confirm Dialog
+    openConfirmDialog: (state, action) => {
+      state.confirmDialog = {
+        open: true,
+        message: action.payload.message,
+        onConfirm: action.payload.onConfirm,
+      };
+    },
+    closeConfirmDialog: (state) => {
+      state.confirmDialog = { open: false, message: "", onConfirm: null };
+    },
+
+    // Toasts
+    showToast: (state, action) => {
+      state.toast = {
+        type: action.payload.type,
+        message: action.payload.message,
+      };
+    },
+    clearToast: (state) => {
+      state.toast = { type: null, message: "" };
+    },
+
+    // Loading Overlay
+    showLoading: (state, action) => {
+      state.loadingOverlay = {
+        active: true,
+        message: action.payload?.message || "Loading...",
+      };
+    },
+    hideLoading: (state) => {
+      state.loadingOverlay = { active: false, message: "Loading..." };
+    },
+  },
+});
+
+export const {
+  openFormDialog,
+  closeFormDialog,
+  openConfirmDialog,
+  closeConfirmDialog,
+  showToast,
+  clearToast,
+  showLoading,
+  hideLoading,
+} = uiSlice.actions;
+
+export default uiSlice.reducer;
