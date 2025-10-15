@@ -20,10 +20,8 @@ import java.util.UUID;
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
 
-
     private final JobPostingRepository jobPostingRepository;
     private final ApplicationStatusRepository statusRepository;
-
     private final ApplicationRepository applicationRepository;
 
     public ApplicationServiceImpl(ApplicationRepository applicationRepository,

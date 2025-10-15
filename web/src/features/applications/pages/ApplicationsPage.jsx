@@ -6,10 +6,16 @@ import ApplicationsFilters from "../components/ApplicationsFilters";
 import ApplicationsTable from "../components/ApplicationsTable";
 import ApplicationsPagination from "../components/ApplicationsPagination";
 import { fetchApplications } from "../store/applicationsActions";
+import { notifyError, notifyInfo } from "../../../utils/handleAsyncCases";
+import ApplicationsDialog from "../components/ApplicationsDialog";
 
-const ApplicationsPage = () => {
+const ApplicationsPage = () => {  
   const dispatch = useDispatch();
   const { items, loading, error } = useSelector((state) => state.applications);
+
+  const { formDialog } = useSelector(
+    (state) => state.ui
+  );
 
   useEffect(() => {
     dispatch(fetchApplications());
@@ -17,19 +23,16 @@ const ApplicationsPage = () => {
 
   return (
     <div className="w-full">
+      {loading && notifyInfo("Loading applications...")}
+      {error && notifyError(error)}      
       <ApplicationsHeader />
-      <ApplicationsFilters />
-      {loading && <p>Loading applications...</p>}
-      {error && <p className="text-red-500">Error: {error}</p>}
+      <ApplicationsFilters />            
       <ApplicationsTable rows={items} />
       <ApplicationsPagination />
-<<<<<<< Updated upstream
-=======
       <ApplicationsDialog
         open={formDialog.open}        
         mode={formDialog.mode}        
       />
->>>>>>> Stashed changes
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchApplications } from './applicationsActions';
+import { deleteApplication, fetchApplications } from './applicationsActions';
 import { handleAsyncCases } from '../../../utils/handleAsyncCases';
 
 const applicationsSlice = createSlice({
@@ -9,7 +9,7 @@ const applicationsSlice = createSlice({
     status: 'idle',
     error: null,
     form: {
-      mode: "create", 
+      mode: "create", // "create" | "edit"
       values: {
         id: null,
         jobPostingId: "",
@@ -43,19 +43,26 @@ const applicationsSlice = createSlice({
     loadFormForEdit: (state, action) => {
       state.form = {
         mode: "edit",
-        values: action.payload, 
+        values: action.payload, // datos precargados
       };
     },
   },
-  reducers: {},
   extraReducers: (builder) => {
     // Fetch applications
     handleAsyncCases(builder, fetchApplications, {
-      onFulfilled: (state, action) => {
+      onFulfilled: (state, action) => {        
+        state.items = action.payload;
+      },
+    });
+    handleAsyncCases(builder, deleteApplication, {
+      onFulfilled: (state, action) => {        
         state.items = action.payload;
       },
     });   
   },
 });
+
+
+export const { setFormField, resetForm, loadFormForEdit } =  applicationsSlice.actions
 
 export default applicationsSlice.reducer;
