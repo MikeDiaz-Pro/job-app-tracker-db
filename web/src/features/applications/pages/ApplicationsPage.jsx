@@ -23,6 +23,13 @@ const ApplicationsPage = () => {
       {error && <p className="text-red-500">Error: {error}</p>}
       <ApplicationsTable rows={items} />
       <ApplicationsPagination />
+<<<<<<< Updated upstream
+=======
+      <ApplicationsDialog
+        open={formDialog.open}        
+        mode={formDialog.mode}        
+      />
+>>>>>>> Stashed changes
     </div>
   );
 };
