@@ -291,15 +291,19 @@ bash scripts/validate_db.sh
 
 ---
 
-## 🧭 Roadmap (2-week DB-first)
-- Week 1: schema v1, indexes, seed, queries + EXPLAIN
-- Week 2: status history, tags, views/materialized views, KPIs, hardening
 
-PRs:
-- `PR #1` – DB v1 (core tables + indexes + seed + queries)
-- `PR #2` – DB v2 (history + tags + views + KPIs)
+## 📊 Entity Relationship Diagram (ERD)
 
----
+- **Editable file:** [`docs/ERD/ERD_JOB_TRACKER_DB_V1`](./docs/ERD_JOB_TRACKER_DB_V1)  
+  *(Open with your ERD tool to update or review the schema)*
+
+- **Diagram image:**  
+
+![ERD Diagram](./docs/images/ERD_JOB_TRACKER_DB_V1.png)
+
+
+
+
 
 ## 📜 License
 Educational / portfolio use.
